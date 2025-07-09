@@ -1,0 +1,33 @@
+{% extends 'compliance/base.html' %}
+
+{% block content %}
+<h3>Controles ISO 27002</h3>
+<form method="post">
+    {% csrf_token %}
+    <div class="row mb-3">
+        <div class="col-md-4">
+            <label for="tipo_control" class="form-label"><strong>Tipo de Control</strong></label>
+            <select class="form-select" id="tipo_control" name="tipo_control">
+                <option selected>Seleccione tipo</option>
+                <option value="tipo1">Tipo 1</option>
+                <option value="tipo2">Tipo 2</option>
+                <option value="tipo3">Tipo 3</option>
+            </select>
+        </div>
+        <div class="col-md-4">
+            <label for="clausula" class="form-label"><strong>Cláusula</strong></label>
+            <input type="text" class="form-control" id="clausula" name="clausula" placeholder="Ej: 5.1, 6.2, 8.1" />
+        </div>
+    </div>
+    <div class="mb-3">
+        <label for="titulo_requerimiento" class="form-label"><strong>Título del Requerimiento</strong></label>
+        <input type="text" class="form-control" id="titulo_requerimiento" name="titulo_requerimiento" placeholder="Título del control" />
+    </div>
+    <div class="mb-3">
+        <label for="detalle_control" class="form-label"><strong>Detalle del Control</strong></label>
+        <textarea class="form-control" id="detalle_control" name="detalle_control" rows="3" placeholder="Descripción detallada del control"></textarea>
+    </div>
+    <button type="submit" class="btn btn-success">Agregar Control</button>
+    <button type="button" class="btn btn-warning">Cargar Controles por Defecto</button>
+</form>
+{% endblock %}
