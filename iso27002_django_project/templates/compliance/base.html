@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Sistema ISO 27002</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <style>
+        body {
+            background: linear-gradient(90deg, #1e3c72, #2a5298);
+            color: white;
+        }
+        .nav-tabs .nav-link.active {
+            background-color: #0d6efd;
+            color: white;
+        }
+        .content-container {
+            background-color: #f8f9fa;
+            color: black;
+            padding: 20px;
+            margin-top: 20px;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+    <header class="p-3 mb-2 bg-primary text-white text-center">
+        <h1>Sistema ISO 27002</h1>
+        <p>Análisis de Cumplimiento de Controles de Seguridad</p>
+    </header>
+    <nav>
+        <ul class="nav nav-tabs justify-content-center">
+            <li class="nav-item">
+                <a class="nav-link {% if request.path == '/' %}active{% endif %}" href="{% url 'compliance:datos_empresa' %}">Datos de Empresa</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link {% if request.path == '/gestion-controles/' %}active{% endif %}" href="{% url 'compliance:gestion_controles' %}">Gestión de Controles</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link {% if request.path == '/evaluacion/' %}active{% endif %}" href="{% url 'compliance:evaluacion' %}">Evaluación</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link {% if request.path == '/reportes-graficos/' %}active{% endif %}" href="{% url 'compliance:reportes_graficos' %}">Reportes y Gráficos</a>
+            </li>
+        </ul>
+    </nav>
+    <main class="container content-container">
+        {% block content %}
+        {% endblock %}
+    </main>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
