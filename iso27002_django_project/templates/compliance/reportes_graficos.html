@@ -1,0 +1,110 @@
+{% extends 'compliance/base.html' %}
+
+{% block content %}
+<h3>Reportes y Gráficos</h3>
+<div class="row text-white">
+    <div class="col-md-3 mb-3">
+        <div class="p-3 rounded" style="background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);">
+            <h2>12</h2>
+            <p>Total Controles</p>
+        </div>
+    </div>
+    <div class="col-md-3 mb-3">
+        <div class="p-3 rounded" style="background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);">
+            <h2>0</h2>
+            <p>Controles Evaluados</p>
+        </div>
+    </div>
+    <div class="col-md-3 mb-3">
+        <div class="p-3 rounded" style="background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);">
+            <h2>0%</h2>
+            <p>Promedio General</p>
+        </div>
+    </div>
+    <div class="col-md-3 mb-3">
+        <div class="p-3 rounded" style="background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);">
+            <h2>Inicial</h2>
+            <p>Nivel de Madurez</p>
+        </div>
+    </div>
+</div>
+<p>Progreso de Evaluación: 0%</p>
+<div class="row">
+    <div class="col-md-4">
+        <h5>Distribución de Calificaciones</h5>
+        <canvas id="calificacionesChart"></canvas>
+    </div>
+    <div class="col-md-4">
+        <h5>Cumplimiento por Tipo de Control</h5>
+        <canvas id="cumplimientoTipoChart"></canvas>
+    </div>
+    <div class="col-md-4">
+        <h5>Evolución del Cumplimiento</h5>
+        <canvas id="evolucionCumplimientoChart"></canvas>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    const ctxCalificaciones = document.getElementById('calificacionesChart').getContext('2d');
+    const calificacionesChart = new Chart(ctxCalificaciones, {
+        type: 'bar',
+        data: {
+            labels: ['Alta', 'Media', 'Baja'],
+            datasets: [{
+                label: 'Cantidad',
+                data: [0, 0, 0],
+                backgroundColor: ['#007bff', '#ffc107', '#dc3545']
+            }]
+        },
+        options: {
+            responsive: true,
+            scales: {
+                y: { beginAtZero: true }
+            }
+        }
+    });
+
+    const ctxCumplimientoTipo = document.getElementById('cumplimientoTipoChart').getContext('2d');
+    const cumplimientoTipoChart = new Chart(ctxCumplimientoTipo, {
+        type: 'line',
+        data: {
+            labels: ['Tipo 1', 'Tipo 2', 'Tipo 3'],
+            datasets: [{
+                label: 'Promedio de Cumplimiento (%)',
+                data: [0, 0, 0],
+                borderColor: '#007bff',
+                fill: false,
+                tension: 0.1
+            }]
+        },
+        options: {
+            responsive: true,
+            scales: {
+                y: { beginAtZero: true, max: 100 }
+            }
+        }
+    });
+
+    const ctxEvolucionCumplimiento = document.getElementById('evolucionCumplimientoChart').getContext('2d');
+    const evolucionCumplimientoChart = new Chart(ctxEvolucionCumplimiento, {
+        type: 'line',
+        data: {
+            labels: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun'],
+            datasets: [{
+                label: 'Cumplimiento General (%)',
+                data: [0, 0, 0, 0, 0, 0],
+                borderColor: '#007bff',
+                fill: false,
+                tension: 0.1
+            }]
+        },
+        options: {
+            responsive: true,
+            scales: {
+                y: { beginAtZero: true, max: 100 }
+            }
+        }
+    });
+</script>
+{% endblock %}
