@@ -1,0 +1,50 @@
+{% extends 'compliance/base.html' %}
+
+{% block content %}
+<h3>Evaluación de Controles</h3>
+<form method="post">
+    {% csrf_token %}
+    <div class="mb-3">
+        <label for="control" class="form-label"><strong>Seleccionar Control</strong></label>
+        <select class="form-select" id="control" name="control">
+            <option selected>Seleccione un control</option>
+            <option value="control1">Control 1</option>
+            <option value="control2">Control 2</option>
+        </select>
+    </div>
+    <div class="row mb-3">
+        <div class="col-md-4">
+            <label for="calificacion" class="form-label"><strong>Calificación</strong></label>
+            <select class="form-select" id="calificacion" name="calificacion">
+                <option selected>Seleccione calificación</option>
+                <option value="alta">Alta</option>
+                <option value="media">Media</option>
+                <option value="baja">Baja</option>
+            </select>
+        </div>
+        <div class="col-md-4">
+            <label for="valor" class="form-label"><strong>Valor (%)</strong></label>
+            <input type="number" class="form-control" id="valor" name="valor" />
+        </div>
+    </div>
+    <div class="row mb-3">
+        <div class="col-md-6">
+            <label for="responsable" class="form-label"><strong>Responsable</strong></label>
+            <input type="text" class="form-control" id="responsable" name="responsable" placeholder="Nombre del responsable" />
+        </div>
+        <div class="col-md-6">
+            <label for="documentacion_formal" class="form-label"><strong>¿Tiene Documentación Formal?</strong></label>
+            <select class="form-select" id="documentacion_formal" name="documentacion_formal">
+                <option selected>Seleccione</option>
+                <option value="si">Sí</option>
+                <option value="no">No</option>
+            </select>
+        </div>
+    </div>
+    <div class="mb-3">
+        <label for="documentacion_referencia" class="form-label"><strong>Documentación de Referencia</strong></label>
+        <textarea class="form-control" id="documentacion_referencia" name="documentacion_referencia" rows="3" placeholder="Documentos, políticas, procedimientos relacionados"></textarea>
+    </div>
+    <button type="submit" class="btn btn-primary">Guardar Evaluación</button>
+</form>
+{% endblock %}
