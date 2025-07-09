@@ -1,0 +1,38 @@
+{% extends 'compliance/base.html' %}
+
+{% block content %}
+<h3>Información de la Empresa</h3>
+<form method="post">
+    {% csrf_token %}
+    <div class="row mb-3">
+        <div class="col-md-6">
+            <label for="nombre" class="form-label"><strong>Nombre de la Empresa</strong></label>
+            <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Ingrese el nombre de la empresa" />
+        </div>
+        <div class="col-md-6">
+            <label for="sector_industrial" class="form-label"><strong>Sector Industrial</strong></label>
+            <select class="form-select" id="sector_industrial" name="sector_industrial">
+                <option selected>Seleccione un sector</option>
+                <option value="sector1">Sector 1</option>
+                <option value="sector2">Sector 2</option>
+                <option value="sector3">Sector 3</option>
+            </select>
+        </div>
+    </div>
+    <div class="row mb-3">
+        <div class="col-md-6">
+            <label for="contacto_principal" class="form-label"><strong>Contacto Principal</strong></label>
+            <input type="text" class="form-control" id="contacto_principal" name="contacto_principal" placeholder="Nombre del contacto" />
+        </div>
+        <div class="col-md-6">
+            <label for="fecha_evaluacion" class="form-label"><strong>Fecha de Evaluación</strong></label>
+            <input type="date" class="form-control" id="fecha_evaluacion" name="fecha_evaluacion" />
+        </div>
+    </div>
+    <div class="mb-3">
+        <label for="observaciones_generales" class="form-label"><strong>Observaciones Generales</strong></label>
+        <textarea class="form-control" id="observaciones_generales" name="observaciones_generales" rows="3" placeholder="Observaciones sobre la empresa o contexto de la evaluación"></textarea>
+    </div>
+    <button type="submit" class="btn btn-success">Guardar Información</button>
+</form>
+{% endblock %}
